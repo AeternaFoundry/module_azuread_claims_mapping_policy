@@ -4,11 +4,23 @@ Map of claims_mapping_policies, attributes below
 Required:
     - definition
     - display_name
+Optional:
+    - timeouts (block):
+        - create (optional)
+        - delete (optional)
+        - read (optional)
+        - update (optional)
 EOT
 
   type = map(object({
     definition   = list(string)
     display_name = string
+    timeouts = optional(object({
+      create = optional(string)
+      delete = optional(string)
+      read   = optional(string)
+      update = optional(string)
+    }))
   }))
   validation {
     condition = alltrue([
